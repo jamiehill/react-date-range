@@ -9,20 +9,10 @@ export default function parseInput(input, format, period) {
     output = moment(input, format)[period]('day');
   } else if (typeof input === 'function') {
 
+    var mmnt = moment()[period]('day');
+    var inpt = input(mmnt);
 
-
-
-    //var blah = input(moment());
-    ///
-    //output = parseInput(blah, format, period);
-
-
-    output = parseInput(input(moment()), format, period);
-
-
-
-
-    //output = parseInput(input(moment()[period]('day')) , format, period);
+    output = parseInput(inpt, format, period);
 
   } else if (input._isAMomentObject) {
     output = input[period]('day').clone();
