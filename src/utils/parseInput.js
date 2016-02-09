@@ -8,7 +8,22 @@ export default function parseInput(input, format, period) {
   } else if (typeof input === 'string') {
     output = moment(input, format)[period]('day');
   } else if (typeof input === 'function') {
-    output = parseInput( input(moment()[period]('day')) , format, period);
+
+
+
+
+    //var blah = input(moment());
+    ///
+    //output = parseInput(blah, format, period);
+
+
+    output = parseInput(input(moment()), format, period);
+
+
+
+
+    //output = parseInput(input(moment()[period]('day')) , format, period);
+
   } else if (input._isAMomentObject) {
     output = input[period]('day').clone();
   }
