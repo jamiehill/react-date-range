@@ -25,8 +25,8 @@ function checkEndEdge(dayMoment, range) {
 
 function isOusideMinMax(dayMoment, minDate, maxDate, format) {
   return (
-    (minDate && dayMoment.isBefore(parseInput(minDate, format))) ||
-    (maxDate && dayMoment.isAfter(parseInput(maxDate, format)))
+    (minDate && dayMoment.isBefore(parseInput(minDate, format), 'startOf')) ||
+    (maxDate && dayMoment.isAfter(parseInput(maxDate, format, 'endOf')))
   )
 }
 
@@ -37,7 +37,7 @@ class Calendar extends Component {
 
     const { format, range, theme, offset, firstDayOfWeek } = props;
 
-    const date = parseInput(props.date, format)
+    const date = parseInput(props.date, format, 'startOf')
     const state = {
       date,
       shownDate : (range && range['endDate'] || date).clone().add(offset, 'months'),
