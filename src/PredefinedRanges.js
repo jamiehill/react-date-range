@@ -18,7 +18,7 @@ class PredefinedRanges extends Component {
 
     this.props.onSelect({
       startDate : parseInput(range['startDate'], null, 'startOf'),
-      endDate   : parseInput(range['endDate'], 'endOf'),
+      endDate   : parseInput(range['endDate'], null, 'endOf')
     }, PredefinedRanges);
   }
 
